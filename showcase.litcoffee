@@ -30,23 +30,16 @@ Now, we need to grab the element to highlight.
     
       target = document.querySelector selector
 
-Then we collect the measurements of that element so that we can create an element of equal size and positioning.
+Next, collect the measurements of that element so that we can create an element of equal size and positioning.
 
       r = target.getBoundingClientRect()
-
-      top = r.top
-      left = r.left
-      width = r.width
-      height = r.height
-
-Now we create our clone!  
         
       clone = document.createElement 'div'
       cloneStyles = "
-      top: #{top}px; 
-      left: #{left}px; 
-      width: #{width}px; 
-      height: #{height}px;"
+      top: #{r.top}px; 
+      left: #{r.left}px; 
+      width: #{r.width}px; 
+      height: #{r.height}px;"
 
 We need a few more supporting styles to make this work:
 
