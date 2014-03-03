@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Showcase - An easy way to draw attention to specific elements</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="showcase-an-easy-way-to-draw-attention-to-specific-elements">Showcase - An easy way to draw attention to specific elements</h1>
+<p>Showcase is a tiny library that helps you highlight a specific element on a page, by darkening the rest of the page.</p>
+<h2 id="example">Example</h2>
+<p><img src="http://puu.sh/7fShk.png" alt="Example Screenshot"></p>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-javascript">showcase(<span class="hljs-string">'#title'</span>);
+</code></pre>
+<h2 id="annotated-source">Annotated Source</h2>
+<p>The <code>showcase</code> function is what we’ll use to highlight elements.  Just pass it a CSS selector like you would with jQuery.</p>
+
+          
+            <div class='highlight'><pre><span class="hljs-built_in">window</span>.<span class="hljs-function"><span class="hljs-title">showcase</span> = <span class="hljs-params">(selector)</span> -&gt;</span></pre></div>
+          
+        
+
+        
+      </div>
+
+      
+        
+        <p>Before we do any popping <em>out</em> of elements, we should make sure everything else is popped back <em>in</em>.
+I feel like if you’re going to use an effect like this, you should only use it on one element at a time.</p>
+
+        
+          <div class='highlight'><pre>  poppedOut = <span class="hljs-built_in">document</span>.querySelector <span class="hljs-string">'[sc-popped]'</span>
+  <span class="hljs-keyword">if</span> poppedOut? 
+    poppedOut.parentNode.removeChild poppedOut</pre></div>
+        
+      
+        
+        <p>Now, we need to grab the element to highlight.</p>
+
+        
+          <div class='highlight'><pre>  target = <span class="hljs-built_in">document</span>.querySelector selector</pre></div>
+        
+      
+        
+        <p>Then we collect the measurements of that element so that we can create an element of equal size and positioning.</p>
+
+        
+          <div class='highlight'><pre>  r = target.getBoundingClientRect()
+
+  top = r.top
+  left = r.left
+  width = r.width
+  height = r.height</pre></div>
+        
+      
+        
+        <p>Now we create our clone!  </p>
+
+        
+          <div class='highlight'><pre>  clone = <span class="hljs-built_in">document</span>.createElement <span class="hljs-string">'div'</span>
+  cloneStyles = <span class="hljs-string">"
+  top: <span class="hljs-subst">#{top}</span>px; 
+  left: <span class="hljs-subst">#{left}</span>px; 
+  width: <span class="hljs-subst">#{width}</span>px; 
+  height: <span class="hljs-subst">#{height}</span>px;"</span></pre></div>
+        
+      
+        
+        <p>We need a few more supporting styles to make this work:</p>
+
+        
+          <div class='highlight'><pre>  cloneStyles += <span class="hljs-string">'position: absolute; 
+  box-shadow: rgba(0,0,0,0.6) 0 0 0 30000px, 0 0 25px #000;'</span>
+  clone.setAttribute <span class="hljs-string">'style'</span>, cloneStyles
+  clone.setAttribute <span class="hljs-string">'sc-popped'</span>, <span class="hljs-literal">true</span></pre></div>
+        
+      
+        
+        <p>And finally, shove that sucker into the DOM.</p>
+
+        
+          <div class='highlight'><pre>  <span class="hljs-built_in">document</span>.body.appendChild clone</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
