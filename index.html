@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Showcase Demo</title>
+</head>
+<body>
+
+  <img src="http://www.psdgraphics.com/wp-content/uploads/2012/03/grunge-halftone-background.jpg"  style="width: 300px;margin-top:100px;" id="blue">
+
+  <img src="http://www.psdgraphics.com/wp-content/uploads/2011/06/halftone-background.jpg"  style="width: 300px;margin-top:100px;" id="red">  
+
+<script src="./showcase.min.js"></script>
+<script>
+  showcase('#blue');
+
+  setInterval(function(){
+    showcase('#red');
+  },1800);
+
+  setTimeout(function(){
+    setInterval(function(){
+      showcase('#blue');
+    },1800);        
+  },900);
+</script>
+</body>
+</html>
