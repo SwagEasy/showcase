@@ -14,4 +14,4 @@ showcase('#title');
 
 ## Annotated Source
 
-I used Showcase as an opportunity to check out Docco and Literate CoffeeScript.  To read the annotated source, clone the project and open up `docs/index.html` in your browser.  It's pretty neat :)
+I used Showcase as an opportunity to check out Docco and Literate CoffeeScript.  To read the annotated source, ~~clone the project and open up `docs/index.html` in your browser~~ check out [showcase.litcoffee](https://github.com/SwagEasy/showcase/blob/master/showcase.litcoffee). It's pretty neat :)
